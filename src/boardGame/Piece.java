@@ -1,6 +1,6 @@
 package boardGame;
 
-public class Piece {
+public abstract class Piece {
 	
 	private Board board;
 	
@@ -16,25 +16,26 @@ public class Piece {
 		return board;
 	}
 	
-	public boolean[][] possibleMoves(){
-		
-		
-		return null;
-	}
+//	matriz boleana das possicoes possiveis da peca
+	public abstract boolean[][] possibleMoves();
 	
+//	verifica se a peca pode mover para uma dada posicao
 	public boolean possibleMove(Position position) {
-		
-		
-		return true;
+		return possibleMoves()[position.getRow()][position.getColumn()];
 	}
 	
+//	retorna se existe pelo menos um movimento possivel para a peca
 	public boolean isThereAnyPossibleMove() {
 		
+		boolean[][] mat = possibleMoves();
 		
+		for(int i=0; i<mat.length; i++) {
+			for(int j=0; j<mat.length; j++) {
+				if(mat[i][j])
+					return true;
+			}
+		}
 		
-		return true;
+		return false;
 	}
-	
-	
-
 }
