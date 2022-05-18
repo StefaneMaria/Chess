@@ -53,8 +53,13 @@ public class ChessMatch {
         placeNewPiece('d', 8, new King(board, Color.BLACK));
 	}
 	
+//	serve pra imprimir as posicoes possiveis dada uma posicao inicial
 	public boolean[][] possibleMoves(ChessPosition sourcePosition){
-		return null;
+		
+		Position position = sourcePosition.toPosition();
+		validateSourcePosition(position);
+		return board.piece(position).possibleMoves();
+		
 	}
 	
 	public ChessPiece performChessMove(ChessPosition sourcePosition, ChessPosition targetPosition) {
